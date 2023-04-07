@@ -1,21 +1,34 @@
 const block = document.getElementById("block");
 const character = document.getElementById("character");
-
+const topScoreShow = document.getElementById("topscore");
+const playerNameShoe = document.getElementById("playerName");
+const playerScoreShow = document.getElementById("playerScore");
+let score = 0;
+localStorage.setItem("Name", "Asharaf Khadir");
+localStorage.setItem("TopScore", 8);
+let getName = localStorage.getItem("Name");
+playerNameShoe.textContent = `Name : ${getName}`
+playerScoreShow.textContent = `Score : ${score}`;
 let jumping = 0;
 let characterTop;
 let blockTop;
 let blockleft;
 let jumpInterval;
-let score = 0;
+
 let topScore;
+let getScore;
+getScore = localStorage.getItem("TopScore");
+topScoreShow.textContent = `TopScore : ${getScore}`;
 
 addEventListener("animationiteration", () => {
+  getScore = localStorage.getItem("TopScore");
+  playerScoreShow.textContent = `Score : ${score}`;
+  topScoreShow.textContent = `TopScore : ${getScore}`;
   score++;
 });
 
-localStorage.setItem("Name", "Asharaf Khadir");
-localStorage.setItem("TopScore", 20);
-let getScore = localStorage.getItem("TopScore");
+
+
 
 function result() {
   let text = `Game Over Score is ${score} Press Okay to Restrat`;
@@ -30,22 +43,24 @@ function result() {
 
 setInterval(() => {
   if (score > getScore) {
+    localStorage.removeItem("TopScore");
     localStorage.setItem("TopScore", score);
     topScore = score;
   } else {
     topScore = getScore;
   }
-
+  
   characterTop = parseInt(
     window.getComputedStyle(character).getPropertyValue("top")
   );
   blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
   blockleft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-  if (characterTop > 280 && blockleft < 30) {
+  if (characterTop > 290 && blockleft < 30) {
+    // character.style.backgroundImage = "url('./Images/blood.svg')";
     return result();
   }
   if(characterTop < 20 || characterTop > 325){
-    
+    // character.style.backgroundImage = "url('./Images/blood.svg')";
     return result();
   }
   if (characterTop < 330 && jumping == 0) {
