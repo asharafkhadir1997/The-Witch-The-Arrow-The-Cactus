@@ -37,11 +37,9 @@ addEventListener("animationiteration", () => {
   }
 });
 function result() {
-  let text = `Game Over !! Your Score is ${score} \nWanna Play Again`;
-  if (confirm(text) == true) {
-    window.location.reload();
-  } else {
-    window.location.reload();
+  alert(`Game Over !! Your Score is ${score} \nWanna Play Again`);
+  if (true) {
+    return window.location.reload();
   }
 }
 setInterval(() => {
