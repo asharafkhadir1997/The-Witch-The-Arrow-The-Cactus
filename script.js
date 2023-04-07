@@ -40,12 +40,12 @@ setInterval(() => {
     window.getComputedStyle(block).getPropertyValue("left")
   );
 
-  var characterPos = character.getBoundingClientRect();
-  var blockPos = block.getBoundingClientRect();
-  var chartop = characterPos.top;
-  var blocktop = blockPos.top;
-  var charleft = characterPos.left;
-  var blockleft = blockPos.left;
+  let characterPos = character.getBoundingClientRect();
+  let blockPos = block.getBoundingClientRect();
+  let chartop = characterPos.top;
+  let blocktop = blockPos.top;
+  let charleft = characterPos.left;
+  let blockleft = blockPos.left;
   console.log(blockleft);
   console.log(charleft);
   if (chartop + 60 == blocktop) {
