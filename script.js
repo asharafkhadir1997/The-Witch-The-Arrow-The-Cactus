@@ -49,10 +49,9 @@ setInterval(() => {
 
   console.log(blockleft);
   if(chartop > 240){
-    if(blockleft < 50 && blockleft > 20){
+    if(blockleft < 70 && blockleft > 20){
         return result();
     }
-    
   }
   
 
