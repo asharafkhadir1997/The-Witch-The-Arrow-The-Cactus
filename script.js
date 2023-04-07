@@ -29,6 +29,8 @@ setInterval(() => {
   charCurrentHeight = parseInt(
     window.getComputedStyle(character).getPropertyValue("top")
   );
+
+
   blockCoordinatestop = parseInt(
     window.getComputedStyle(block).getPropertyValue("top")
   );
@@ -46,14 +48,12 @@ setInterval(() => {
   let blocktop = parseInt(blockPos.top);
   let charleft = parseInt(characterPos.left);
   let blockleft = parseInt(blockPos.left);
-
   console.log(blockleft);
-  if(chartop > 240){
-    if(blockleft < 70 && blockleft > 20){
-        return result();
-    }
+  console.log(charleft);
+  if(blockleft < 70 && blockleft > 10){
+    return result();
   }
-  
+
 
   if (jumping == 0) {
     character.style.top = `${charCurrentHeight + 1}px`;
@@ -63,6 +63,7 @@ setInterval(() => {
     return result();
   }
 }, 10);
+
 
 function jump() {
   jumping = 1;
