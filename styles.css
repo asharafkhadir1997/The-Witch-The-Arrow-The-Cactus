@@ -10,7 +10,7 @@
 
 #character {
   position: absolute;
-  top: 180px;
+  top: 100px;
   width: 80px;
   height: 80px;
   left: 10px;
@@ -24,7 +24,6 @@
   position: absolute;
   background-size: cover;
   bottom: 52px;
-  right: 0px;
   animation: block 6s infinite linear;
 }
 @keyframes block{

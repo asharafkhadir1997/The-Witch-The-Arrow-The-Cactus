@@ -10,9 +10,9 @@ let characterCoordinatesleft;
 let score = 0;
 let randomHeight;
 block.addEventListener("animationiteration", () => {
-  randomHeight = Math.floor(Math.random() * (100 - 50) + 100);
-  block.style.height = `${randomHeight}px`;
-  block.style.width = `${randomHeight}px`;
+  //   randomHeight = Math.floor(Math.random() * (100 - 50) + 100);
+  //   block.style.height = `${randomHeight}px`;
+  //   block.style.width = `${randomHeight}px`;
   score++;
 });
 
@@ -42,17 +42,19 @@ setInterval(() => {
 
   let characterPos = character.getBoundingClientRect();
   let blockPos = block.getBoundingClientRect();
-  let chartop = characterPos.top;
-  let blocktop = blockPos.top;
-  let charleft = characterPos.left;
-  let blockleft = blockPos.left;
+  let chartop = parseInt(characterPos.top);
+  let blocktop = parseInt(blockPos.top);
+  let charleft = parseInt(characterPos.left);
+  let blockleft = parseInt(blockPos.left);
+
   console.log(blockleft);
-  console.log(charleft);
-  if (chartop + 60 == blocktop) {
-    if (blockleft >= 5 && blockleft < 80) {
-      return result();
+  if(chartop > 240){
+    if(blockleft < 50 && blockleft > 20){
+        return result();
     }
+    
   }
+  
 
   if (jumping == 0) {
     character.style.top = `${charCurrentHeight + 1}px`;
