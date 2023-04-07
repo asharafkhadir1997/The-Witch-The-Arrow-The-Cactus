@@ -23,24 +23,21 @@ function getUserName(message) {
 }
 getUserName("Enter your name!");
 
-//Getting Topscore 
+//Getting Topscore
 let getTopScore = localStorage.getItem("TopScore");
 topScoreTag.textContent = `Top Score : ${getTopScore}`;
 //Event lstner to add score each time
 addEventListener("animationiteration", () => {
   score++;
   playerScoreTag.textContent = `Score : ${score}`;
-  if(score > getTopScore){
+  if (score > getTopScore) {
     localStorage.removeItem("TopScore");
     localStorage.setItem("TopScore", score);
     topScoreTag.textContent = `Top Score : ${score}`;
   }
 });
 function result() {
-  alert(`Game Over !! Your Score is ${score} \nWanna Play Again`);
-  if (true) {
-    return window.location.reload();
-  }
+  return window.location.reload();
 }
 setInterval(() => {
   characterTop = parseInt(
