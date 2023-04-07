@@ -24,7 +24,7 @@ addEventListener("animationiteration", () => {
   getScore = localStorage.getItem("TopScore");
   playerScoreShow.textContent = `Score : ${score}`;
   topScoreShow.textContent = `TopScore : ${getScore}`;
-  score++;
+  ++score;
 });
 
 
