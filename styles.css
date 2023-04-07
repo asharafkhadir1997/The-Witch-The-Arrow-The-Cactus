@@ -1,0 +1,33 @@
+#game__console {
+  background-image: url(./Images/witch-background.jpg);
+  background-size: cover;
+  width: 700px;
+  height: 400px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#character {
+  position: absolute;
+  top: 180px;
+  width: 80px;
+  height: 80px;
+  left: 10px;
+  background-image: url(./Images/witch.svg);
+}
+
+#block {
+  height: 50px;
+  width: 50px;
+  background-image: url(./Images/cactus.png);
+  position: absolute;
+  background-size: cover;
+  bottom: 52px;
+  right: 0px;
+  animation: block 6s infinite linear;
+}
+@keyframes block{
+    0%{left:750px}
+    100%{left:-50px}
+}
