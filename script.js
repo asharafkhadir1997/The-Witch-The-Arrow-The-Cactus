@@ -10,7 +10,7 @@ let score = 0,
   characterTop,
   blockleft,
   jumpInterval;
-
+playerScoreTag.textContent = `Score : ${score}`;
 //Manualy setting random user with TopScore
 let setTopScore = 12;
 localStorage.setItem("TopScore", setTopScore);
