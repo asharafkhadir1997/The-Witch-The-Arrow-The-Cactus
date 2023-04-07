@@ -1,32 +1,46 @@
-#game__console {
-  background-image: url(./Images/witch-background.jpg);
-  background-size: cover;
-  width: 700px;
-  height: 400px;
+* {
+  padding: 0px;
+  margin: 0px;
+}
+#game_container {
+  max-height: 450px;
+  min-height: 450px;
+  max-width: 800px;
+  min-width: 800px;
   margin: auto;
+  background-size: cover;
+  background-image: url(./Images/witch-background.jpg);
   position: relative;
   overflow: hidden;
 }
 
 #character {
   position: absolute;
-  top: 100px;
-  width: 80px;
-  height: 80px;
-  left: 10px;
+  max-width: 70px;
+  min-width: 70px;
+  max-height: 70px;
+  min-height: 70px;
   background-image: url(./Images/witch.svg);
+  top: 150px;
+  left: 20px;
 }
-
 #block {
-  height: 50px;
-  width: 50px;
-  background-image: url(./Images/cactus.png);
   position: absolute;
+  max-width: 70px;
+  min-width: 70px;
+  max-height: 70px;
+  min-height: 70px;
   background-size: cover;
-  bottom: 52px;
-  animation: block 6s infinite linear;
+  background-image: url(./Images/cactus.png);
+  bottom: 60px;
+  /* right: 0px; */
+  animation: block 4s linear infinite;
 }
-@keyframes block{
-    0%{left:750px}
-    100%{left:-50px}
+@keyframes block {
+  from {
+    right: -70px;
+  }
+  to {
+    right: 870px;
+  }
 }
