@@ -1,66 +1,58 @@
 const block = document.getElementById("block");
 const character = document.getElementById("character");
-const topScoreShow = document.getElementById("topscore");
-const playerNameShoe = document.getElementById("playerName");
-const playerScoreShow = document.getElementById("playerScore");
-let score = 0;
-localStorage.setItem("Name", "Asharaf Khadir");
-localStorage.setItem("TopScore", 8);
-let getName = localStorage.getItem("Name");
-playerNameShoe.textContent = `Name : ${getName}`
-playerScoreShow.textContent = `Score : ${score}`;
-let jumping = 0;
-let characterTop;
-let blockTop;
-let blockleft;
-let jumpInterval;
+const topScoreTag = document.getElementById("topscore");
+const playerNameTag = document.getElementById("playerName");
+const playerScoreTag = document.getElementById("playerScore");
 
-let topScore;
-let getScore;
-getScore = localStorage.getItem("TopScore");
-topScoreShow.textContent = `TopScore : ${getScore}`;
+let score = 0,
+  userName,
+  jumping = 0,
+  characterTop,
+  blockleft,
+  jumpInterval;
 
-addEventListener("animationiteration", () => {
-  getScore = localStorage.getItem("TopScore");
-  playerScoreShow.textContent = `Score : ${score}`;
-  topScoreShow.textContent = `TopScore : ${getScore}`;
-  ++score;
-});
+//Manualy setting random user with TopScore
+let setTopScore = 12;
+localStorage.setItem("TopScore", setTopScore);
 
-
-
-
-function result() {
-  let text = `Game Over Score is ${score} Press Okay to Restrat`;
-  if (confirm(text) == true) {
-    window.location.reload();
-    score = 0;
-  } else {
-    window.location.reload();
-    score = 0;
-  }
+//Asking user Name
+function getUserName(message) {
+  userName = prompt(message, "Witch");
+  localStorage.setItem("UserName", userName);
+  playerNameTag.textContent = `Name : ${userName}`;
 }
+getUserName("Enter your name!");
 
-setInterval(() => {
-  if (score > getScore) {
+//Getting Topscore 
+let getTopScore = localStorage.getItem("TopScore");
+topScoreTag.textContent = `Top Score : ${getTopScore}`;
+//Event lstner to add score each time
+addEventListener("animationiteration", () => {
+  score++;
+  playerScoreTag.textContent = `Score : ${score}`;
+  if(score > getTopScore){
     localStorage.removeItem("TopScore");
     localStorage.setItem("TopScore", score);
-    topScore = score;
-  } else {
-    topScore = getScore;
+    topScoreTag.textContent = `Top Score : ${score}`;
   }
-  
+});
+function result() {
+  let text = `Game Over !! Your Score is ${score} \nWanna Play Again`;
+  if (confirm(text) == true) {
+    window.location.reload();
+  } else {
+    window.location.reload();
+  }
+}
+setInterval(() => {
   characterTop = parseInt(
     window.getComputedStyle(character).getPropertyValue("top")
   );
-  blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
   blockleft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
   if (characterTop > 290 && blockleft < 30) {
-    // character.style.backgroundImage = "url('./Images/blood.svg')";
     return result();
   }
-  if(characterTop < 20 || characterTop > 325){
-    // character.style.backgroundImage = "url('./Images/blood.svg')";
+  if (characterTop < 20 || characterTop > 325) {
     return result();
   }
   if (characterTop < 330 && jumping == 0) {
