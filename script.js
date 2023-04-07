@@ -21,7 +21,7 @@ function getUserName(message) {
   localStorage.setItem("UserName", userName);
   playerNameTag.textContent = `Name : ${userName}`;
 }
-getUserName("Enter your name!");
+getUserName("Enter your name to start game!");
 
 //Getting Topscore
 let getTopScore = localStorage.getItem("TopScore");
