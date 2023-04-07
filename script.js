@@ -1,68 +1,27 @@
-const character = document.getElementById("character");
 const block = document.getElementById("block");
-let maxHeight = 300;
-let minHeight = 30;
-let charCurrentHeight;
-let jumping = 0;
-let blockCoordinatestop;
-let blockCoordinatesleft;
-let characterCoordinatesleft;
-let score = 0;
-let randomHeight;
-block.addEventListener("animationiteration", () => {
-  //   randomHeight = Math.floor(Math.random() * (100 - 50) + 100);
-  //   block.style.height = `${randomHeight}px`;
-  //   block.style.width = `${randomHeight}px`;
-  score++;
-});
+const character = document.getElementById("character");
 
-function result() {
-  let text = `Game Over \n Score : ${score} \n Press Okay to Restart Game`;
-  if (confirm(text) == true) {
-    return window.location.reload();
-  } else {
-    return window.location.reload();
-  }
-}
+let jumping = 0;
+let characterTop;
+let blockTop;
+let blockleft;
+let jumpInterval;
 
 setInterval(() => {
-  charCurrentHeight = parseInt(
+  characterTop = parseInt(
     window.getComputedStyle(character).getPropertyValue("top")
   );
-
-
-  blockCoordinatestop = parseInt(
-    window.getComputedStyle(block).getPropertyValue("top")
-  );
-  characterCoordinatesleft = parseInt(
-    window.getComputedStyle(character).getPropertyValue("left")
-  );
-
-  blockCoordinatesleft = parseInt(
+  blockTop = parseInt(window.getComputedStyle(block).getPropertyValue("top"));
+  blockleft = parseInt(
     window.getComputedStyle(block).getPropertyValue("left")
   );
-
-  let characterPos = character.getBoundingClientRect();
-  let blockPos = block.getBoundingClientRect();
-  let chartop = parseInt(characterPos.top);
-  let blocktop = parseInt(blockPos.top);
-  let charleft = parseInt(characterPos.left);
-  let blockleft = parseInt(blockPos.left);
-  console.log(blockleft);
-  console.log(charleft);
-  if(blockleft < 70 && blockleft > 10){
-    return result();
+  if (characterTop > 280 && blockleft < 30 ) {
+    console.log(true);
   }
-
-
-  if (jumping == 0) {
-    character.style.top = `${charCurrentHeight + 1}px`;
+  if (characterTop < 330 && jumping == 0) {
+    character.style.top = `${characterTop + 3}px`;
   }
-
-  if (charCurrentHeight > maxHeight || charCurrentHeight < minHeight) {
-    return result();
-  }
-}, 10);
+}, 50);
 
 
 function jump() {
